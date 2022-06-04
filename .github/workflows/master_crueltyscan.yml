@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'crueltyscan'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C609C379215E40E887B3F71377C88FCD }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2FA00CA7918F4D809FA98C62EBD8871A }}
           package: .
