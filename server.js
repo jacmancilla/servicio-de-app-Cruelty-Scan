@@ -20,7 +20,7 @@ const routesMarca = require('./rutas/marcas')
 const app = express()
 app.use(express.json())
 
-app.set('port', process.env.PORT || 9000)
+app.set('port', process.env.PORT || 3000)
 const dbOptions = {
     host: 'crueltyscan.mysql.database.azure.com',
     port: 3306,
