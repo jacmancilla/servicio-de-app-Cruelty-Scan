@@ -6,6 +6,7 @@ CREATE TABLE `crueltyscan`.`producto` (
   `id_marca` INT NOT NULL,
   `id_categoria` INT NOT NULL,
   `cod_barra` VARCHAR(20) NOT NULL,
+  `imagen` BLOB NOT NULL,
   PRIMARY KEY (`id_producto`));
 
 ALTER TABLE `crueltyscan`.`producto` 

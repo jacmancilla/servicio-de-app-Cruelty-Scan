@@ -7,6 +7,7 @@ CREATE TABLE `crueltyscan`.`mascota` (
   `tipo_mascota` VARCHAR(20) NOT NULL,
   `foto` BLOB NOT NULL,
   `rut` VARCHAR(10) NOT NULL,
+  `adoptado` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id_animal`));
 
 ALTER TABLE `crueltyscan`.`mascota` 
