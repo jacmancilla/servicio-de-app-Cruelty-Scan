@@ -5,6 +5,7 @@ const routes = express.Router()
 //recibe los datos para loguearse
 routes.post('/login', (req, res) => {
     const { correo, contra } = req.body
+
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send(err)
@@ -26,10 +27,11 @@ routes.post('/login', (req, res) => {
                 }
                 //Valida si las contraseñas son iguales
                 const contraBd = usuario[0].contra
+                const tipoUsuario = usuario[0].id_tipo
                 if (contraBd !== contra) {
                     return res.status(409).send('Contraseña no son iguales')
                 }
-                return res.status(200).send('Inicio sesión exitoso')
+                return res.status(200).json({ tipoUsuario })
             })
         })
     })

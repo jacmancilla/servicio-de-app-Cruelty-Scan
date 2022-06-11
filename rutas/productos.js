@@ -21,7 +21,7 @@ routes.get('/productos/:cod_barra', (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM producto WHERE cod_barra=?', [req.params.cod_barra], async (err, rows) => {
+        conn.query('SELECT * FROM producto JOIN marca ON producto.id_marca = marca.id_marca WHERE producto.cod_barra=?', [req.params.cod_barra], async (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }

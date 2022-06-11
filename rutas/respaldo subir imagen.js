@@ -44,7 +44,6 @@ routes.get('/productos/:cod_barra', (req, res) => {
             if (err) {
                 return res.status(500).send(err)
             }
-            console.log(rows[0].imagen)
             var buffer = Buffer.from(rows[0].imagen, 'base64');
             const newFileName = 'nodejs.png';
             fs.writeFileSync(newFileName, buffer)
@@ -61,14 +60,13 @@ routes.post('/productos', fileUpload, (req, res) => {
     const { cod_barra, nom_producto, test, id_categoria, id_marca } = req.body
 
     const testGuardar = test === 'true' ? true : false
-    console.log(req.file.path)
     var img = fs.readFileSync(req.file.path);
     var encode_img = img.toString('base64');
     var final_img = {
         contentType: req.file.mimetype,
         image: Buffer.from(encode_img, 'base64')
     };
-    console.log(final_img)
+
     const guardar = {
         cod_barra,
         nom_producto,
