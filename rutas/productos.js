@@ -12,10 +12,9 @@ routes.get('/productos', (req, res) => {
             res.json(rows)
         })
     })
-
 })
 
-// Obtener un producto
+// Obtener un producto por codigo de barra
 routes.get('/productos/:cod_barra', (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
@@ -29,6 +28,39 @@ routes.get('/productos/:cod_barra', (req, res) => {
         })
     })
 })
+
+// Obtener un producto por categorias
+routes.get('/productos/:categoria', (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        conn.query('SELECT * FROM producto JOIN categoria ON producto.id_categoria = producto.id_categoria WHERE producto.categoria=?', [req.params.categoria], async (err, rows) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            res.status(200).json(rows)
+        })
+    })
+})
+
+// Obtener un producto por nombre categorias
+routes.get('/buscar/nombrecategoria', (req, res) => {
+    const nombreCategoria = req.headers.categoria
+    req.getConnection((err, conn) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        conn.query('SELECT * FROM producto JOIN categoria ON producto.id_categoria = producto.id_categoria WHERE categoria.nom_categoria=?', [nombreCategoria], async (err, rows) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            res.status(200).json(rows)
+        })
+    })
+})
+
+
 
 // Agregar un nuevo producto
 routes.post('/productos', (req, res) => {
