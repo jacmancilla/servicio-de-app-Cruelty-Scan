@@ -61,7 +61,6 @@ routes.get('/buscar/nombrecategoria', (req, res) => {
 })
 
 
-
 // Agregar un nuevo producto
 routes.post('/productos', (req, res) => {
     req.getConnection((err, conn) => {
