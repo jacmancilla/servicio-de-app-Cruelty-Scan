@@ -12,7 +12,7 @@ const routesUsuario = require('./rutas/usuario')
 const routesCategoria = require('./rutas/categorias')
 const routesMarca = require('./rutas/marcas')
 const routesMascotas = require('./rutas/mascotas')
-// const routesProductofav = require('./rutas/producto_fav')
+const routesProductofav = require('./rutas/producto_fav')
 const routesLogin = require('./rutas/login')
 
 
@@ -45,7 +45,7 @@ app.use('/api', routesUsuario)
 app.use('/api', routesCategoria)
 app.use('/api', routesMarca)
 app.use('/api', routesMascotas)
-// app.use('/api', routesProductofav)
+app.use('/api', routesProductofav)
 app.use('/api', routesLogin)
 
 
