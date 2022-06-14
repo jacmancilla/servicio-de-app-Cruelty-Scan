@@ -31,7 +31,7 @@ routes.post('/login', (req, res) => {
                 if (contraBd !== contra) {
                     return res.status(409).send('Contraseña no son iguales')
                 }
-                return res.status(200).json({ tipoUsuario })
+                return res.status(200).json({ tipoUsuario, rut })
             })
         })
     })
