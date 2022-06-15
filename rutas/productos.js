@@ -29,13 +29,13 @@ routes.get('/productos/:cod_barra', (req, res) => {
     })
 })
 
-// Obtener un producto por categorias
-routes.get('/productos/:categoria', (req, res) => {
+// Obtener un producto por id categorias
+routes.get('/buscar/productos/idcategoria/:idcategoria', (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM producto JOIN categoria ON producto.id_categoria = producto.id_categoria WHERE producto.categoria=?', [req.params.categoria], async (err, rows) => {
+        conn.query('SELECT * FROM producto JOIN categoria ON producto.id_categoria = categoria.id_categoria WHERE producto.id_categoria=?', [req.params.idcategoria], async (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }
@@ -45,7 +45,7 @@ routes.get('/productos/:categoria', (req, res) => {
 })
 
 // Obtener un producto por nombre categorias
-routes.get('/buscar/nombrecategoria', (req, res) => {
+routes.get('/buscar/productos/nombrecategoria', (req, res) => {
     const nombreCategoria = req.headers.categoria
     req.getConnection((err, conn) => {
         if (err) {
