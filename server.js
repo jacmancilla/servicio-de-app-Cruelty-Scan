@@ -14,8 +14,7 @@ const routesMarca = require('./rutas/marcas')
 const routesMascotas = require('./rutas/mascotas')
 const routesProductofav = require('./rutas/producto_fav')
 const routesLogin = require('./rutas/login')
-
-
+const rutesRecuperarClave = require('./rutas/recuperarClave')
 
 const app = express()
 app.use(express.json())
@@ -47,6 +46,7 @@ app.use('/api', routesMarca)
 app.use('/api', routesMascotas)
 app.use('/api', routesProductofav)
 app.use('/api', routesLogin)
+app.use('/api', rutesRecuperarClave)
 
 
 

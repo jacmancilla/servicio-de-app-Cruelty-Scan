@@ -1,6 +1,6 @@
 const express = require('express')
 const routes = express.Router()
-
+const { enviarEmailRegistro } = require('./enviarEmail')
 
 // Obtener todos cliente
 routes.get('/clientes', (req, res) => {
@@ -72,6 +72,8 @@ routes.post('/cliente', (req, res) => {
                     if (err) {
                         return res.status(500).send(err)
                     }
+
+                    enviarEmailRegistro(correo, nombre_cliente)
                     return res.status(200).send('Registro creado')
                 })
             })
