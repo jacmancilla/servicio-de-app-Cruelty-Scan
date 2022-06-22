@@ -23,7 +23,7 @@ routes.get('/cliente/:rut', (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM cliente WHERE rut=?', [req.params.rut], (err, rows) => {
+        conn.query('SELECT * FROM cliente JOIN contacto ON cliente.rut = contacto.rut JOIN usuario ON cliente.rut = usuario.rut WHERE contacto.rut=?', [req.params.rut], (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }
