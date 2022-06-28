@@ -16,7 +16,7 @@ routes.post('/producto-favorito', (req, res) => {
         })
     })
 })
-//Obtener producto favorito por rut
+//Obtener producto favorito por rut y cod barra
 routes.get('/producto-favorito', (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
@@ -37,7 +37,7 @@ routes.get('/producto-favorito/:rut', (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM prod_favorito WHERE rut=?', [req.params.rut], (err, rows) => {
+        conn.query('SELECT * FROM prod_favorito JOIN producto ON prod_favorito.cod_barra = producto.cod_barra WHERE rut=?', [req.params.rut], (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }

@@ -22,7 +22,7 @@ routes.get('/marcas/:id_marca', (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM marca WHERE id_marca=?', [req.params.id_marca], (err, rows) => {
+        conn.query('SELECT * FROM marca WHERE id_marca?', [req.params.id_marca], (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }
@@ -30,6 +30,27 @@ routes.get('/marcas/:id_marca', (req, res) => {
         })
     })
 })
+
+// Obtener una marca por nombre
+routes.get('/buscar/marca/nombre', (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        conn.query('SELECT * FROM marca WHERE nom_marca LIKE ?', [req.headers.nombre_marca], (err, rows) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            res.status(200).json(rows)
+        })
+    })
+})
+
+
+
+
+
+
 
 // Registrar una nueva marca
 routes.post('/marcas', (req, res) => {
