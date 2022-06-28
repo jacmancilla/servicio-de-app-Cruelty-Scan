@@ -97,7 +97,7 @@ routes.put('/cliente/:rut', (req, res) => {
     const llenarUsuario = {
         rut,
         contra,
-        id_tipo: 1
+        id_tipo: 2
     }
 
     const llenarContacto = {
