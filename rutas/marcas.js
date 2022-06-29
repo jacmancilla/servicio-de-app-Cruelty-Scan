@@ -22,7 +22,7 @@ routes.get('/marcas/:id_marca', (req, res) => {
         if (err) {
             return res.status(500).send(err)
         }
-        conn.query('SELECT * FROM marca WHERE id_marca?', [req.params.id_marca], (err, rows) => {
+        conn.query('SELECT * FROM marca WHERE id_marca= ?', [req.params.id_marca], (err, rows) => {
             if (err) {
                 return res.status(500).send(err)
             }
